@@ -1,3 +1,4 @@
+import CommandScreen from "@/components/commandScreen";
 import {
   BottomSheet,
   BottomSheetContent,
@@ -61,6 +62,8 @@ export default function Index() {
           </BottomSheetView>
         </BottomSheetContent>
       </BottomSheet>
+      <CommandScreen />
+
       <Link href={"/form"}>
         <Text>Dar uma olhada no formulário</Text>
       </Link>
