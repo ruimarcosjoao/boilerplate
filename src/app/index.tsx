@@ -67,6 +67,10 @@ export default function Index() {
       <Link href={"/form"}>
         <Text>Dar uma olhada no formulário</Text>
       </Link>
+      <Link href={"/model"}>
+        <Text>Formulario de login</Text>
+      </Link>
+      <Link href={"/top-tab"}>Um novo tipo de navegacao</Link>
     </View>
   );
 }

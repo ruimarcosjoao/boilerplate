@@ -95,7 +95,12 @@ export default function RootLayout() {
             }}
           >
             <Stack.Screen name="index" options={{ title: "Home" }} />
-            <Stack.Screen name="form" options={{ title: "Home" }} />
+            <Stack.Screen name="form" options={{ title: "Formulário" }} />
+            <Stack.Screen name="model" options={{ title: "Login Exemple" }} />
+            <Stack.Screen
+              name="top-tab"
+              options={{ title: "Login Exemple", headerShown: false }}
+            />
             <Stack.Screen
               name="(auth)"
               options={{
