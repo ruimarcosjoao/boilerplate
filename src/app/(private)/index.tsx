@@ -6,7 +6,7 @@ import { View } from "react-native";
 export default function PrivateRoute() {
   const { signOut } = useSession();
   return (
-    <View className="flex-1 items-center justify-center p-4 bg-white">
+    <View className="flex-1 items-center justify-center p-4 bg-background">
       <Text className="text-3xl font-bold">PrivateRoute</Text>
       <Button variant={"destructive"} onPress={() => signOut()}>
         <Text>Logout</Text>

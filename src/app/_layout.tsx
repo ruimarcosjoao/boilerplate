@@ -1,7 +1,9 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Text } from "@/components/ui/text";
 import { SessionProvider } from "@/providers/auth";
+import { useStore } from "@/store/user-store";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Theme, ThemeProvider } from "@react-navigation/native";
@@ -33,6 +35,8 @@ export {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const { count, increment } = useStore();
+
   const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
 
@@ -80,6 +84,9 @@ export default function RootLayout() {
                 },
                 headerRight: () => (
                   <View className="flex-row items-center gap-2">
+                    <Badge>
+                      <Text>{count}</Text>
+                    </Badge>
                     <ThemeToggle />
                     <Avatar
                       alt="Zach Nugent's Avatar"
