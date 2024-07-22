@@ -1,0 +1,104 @@
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Text } from "@/components/ui/text";
+import { H1 } from "@/components/ui/typography";
+import { LogIn } from "@/lib/icons/signIn";
+import { Link } from "expo-router";
+import React from "react";
+import { Image, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+export default function SignUp() {
+  const [checked, setChecked] = React.useState(false);
+  const insets = useSafeAreaInsets();
+  const contentInsets = {
+    top: insets.top,
+    bottom: insets.bottom,
+    left: 12,
+    right: 12,
+  };
+
+  return (
+    <View className="flex-1 gap-4 p-6 items-center justify-center">
+      <Image
+        source={require("../../../assets/images/icon.png")}
+        resizeMode="contain"
+        className="w-24 h-24"
+      />
+      <H1>sign up page</H1>
+      <View className="w-full items-center gap-4">
+        <View className="w-[80%]">
+          <Label nativeID="fullname">Full Name</Label>
+          <Input
+            placeholder="put your full name"
+            accessibilityLabel="fullname"
+          />
+        </View>
+        <View className="w-[80%]">
+          <Label nativeID="email">Email</Label>
+          <Input
+            placeholder="put your email"
+            accessibilityLabel="email"
+            inputMode="email"
+          />
+        </View>
+        <View className="w-[80%]">
+          <Label nativeID="email">Account Type</Label>
+          <Select defaultValue={{ value: "freelancer", label: "freelancer" }}>
+            <SelectTrigger className="w-full">
+              <SelectValue
+                className="text-foreground text-sm native:text-lg"
+                placeholder="Select a fruit"
+              />
+            </SelectTrigger>
+            <SelectContent insets={contentInsets} className="w-[73%]">
+              <SelectGroup>
+                <SelectLabel>Account type</SelectLabel>
+                <SelectItem label="freelancer" value="freelancer">
+                  Freelancer
+                </SelectItem>
+                <SelectItem label="client" value="client">
+                  Client
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </View>
+        <View className="w-[80%]">
+          <Label nativeID="password">Passowrd</Label>
+          <Input
+            placeholder="put your Password"
+            accessibilityLabel="password"
+            secureTextEntry={!checked}
+          />
+          <View className="flex-row items-center gap-2 mt-2">
+            <Checkbox checked={checked} onCheckedChange={setChecked} />
+            <Label nativeID="showpassword">See password</Label>
+          </View>
+        </View>
+        <Link asChild href={"/(auth)/otp"}>
+          <Button className="w-[80%] flex-row items-center gap-2">
+            <LogIn className="text-primary-foreground" />
+            <Text>Sign Up</Text>
+          </Button>
+        </Link>
+
+        <View className="items-center">
+          <Link href={"/(auth)/sign-in"}>
+            <Text className="text-center underline">I just have account</Text>
+          </Link>
+        </View>
+      </View>
+    </View>
+  );
+}
