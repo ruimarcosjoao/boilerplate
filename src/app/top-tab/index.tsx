@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function Red() {
+export default function Blue() {
   return (
     <View>
-      <Text>Red</Text>
+      <Text>Blue</Text>
     </View>
   );
 }

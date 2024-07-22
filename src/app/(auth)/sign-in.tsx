@@ -5,12 +5,13 @@ import { Label } from "@/components/ui/label";
 import { Text } from "@/components/ui/text";
 import { H1 } from "@/components/ui/typography";
 import { LogIn } from "@/lib/icons/signIn";
-import { Link } from "expo-router";
+import { useSession } from "@/providers/auth";
+import { Link, router } from "expo-router";
 import React from "react";
 import { Image, View } from "react-native";
 export default function SignIn() {
   const [checked, setChecked] = React.useState(false);
-
+  const { signIn } = useSession();
   return (
     <View className="flex-1 gap-4 p-6 items-center justify-center">
       <Image
@@ -40,12 +41,16 @@ export default function SignIn() {
             <Label nativeID="showpassword">See password</Label>
           </View>
         </View>
-        <Link asChild href={"/"}>
-          <Button className="w-[80%] flex-row items-center gap-2">
-            <LogIn className="text-primary-foreground" />
-            <Text>Login</Text>
-          </Button>
-        </Link>
+        <Button
+          onPress={() => {
+            signIn();
+            router.replace("/(private)/");
+          }}
+          className="w-[80%] flex-row items-center gap-2"
+        >
+          <LogIn className="text-primary-foreground" />
+          <Text>Login</Text>
+        </Button>
 
         <View className="items-center">
           <Link href={"/(auth)/sign-up"}>

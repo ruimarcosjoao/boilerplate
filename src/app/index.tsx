@@ -63,7 +63,11 @@ export default function Index() {
         </BottomSheetContent>
       </BottomSheet>
       <CommandScreen />
-
+      <Link asChild href={"/(private)/"}>
+        <Button>
+          <Text>Ir para tela privada</Text>
+        </Button>
+      </Link>
       <Link href={"/form"}>
         <Text>Dar uma olhada no formulário</Text>
       </Link>
@@ -71,6 +75,7 @@ export default function Index() {
         <Text>Formulario de login</Text>
       </Link>
       <Link href={"/top-tab"}>Um novo tipo de navegacao</Link>
+      <Link href={"/modal"}>Abrir um modal</Link>
     </View>
   );
 }

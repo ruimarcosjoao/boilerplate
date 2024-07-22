@@ -1,6 +1,7 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Text } from "@/components/ui/text";
+import { SessionProvider } from "@/providers/auth";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Theme, ThemeProvider } from "@react-navigation/native";
@@ -66,48 +67,66 @@ export default function RootLayout() {
       <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
-          <Stack
-            screenOptions={{
-              headerBackTitle: "Voltar",
-              headerTitle(props) {
-                return (
-                  <Text className="text-xl font-semibold">
-                    {toOptions(props.children)}
-                  </Text>
-                );
-              },
-              headerRight: () => (
-                <View className="flex-row items-center gap-2">
-                  <ThemeToggle />
-                  <Avatar
-                    alt="Zach Nugent's Avatar"
-                    className="border border-white"
-                  >
-                    <AvatarImage
-                      source={{ uri: "https://github.com/ruimarcosjoao.png" }}
-                    />
-                    <AvatarFallback>
-                      <Text>ZN</Text>
-                    </AvatarFallback>
-                  </Avatar>
-                </View>
-              ),
-            }}
-          >
-            <Stack.Screen name="index" options={{ title: "Home" }} />
-            <Stack.Screen name="form" options={{ title: "Formulário" }} />
-            <Stack.Screen name="model" options={{ title: "Login Exemple" }} />
-            <Stack.Screen
-              name="top-tab"
-              options={{ title: "Login Exemple", headerShown: false }}
-            />
-            <Stack.Screen
-              name="(auth)"
-              options={{
-                headerShown: false,
+          <SessionProvider>
+            <Stack
+              screenOptions={{
+                headerBackTitle: "Voltar",
+                headerTitle(props) {
+                  return (
+                    <Text className="text-xl font-semibold">
+                      {toOptions(props.children)}
+                    </Text>
+                  );
+                },
+                headerRight: () => (
+                  <View className="flex-row items-center gap-2">
+                    <ThemeToggle />
+                    <Avatar
+                      alt="Zach Nugent's Avatar"
+                      className="border border-white"
+                    >
+                      <AvatarImage
+                        source={{ uri: "https://github.com/ruimarcosjoao.png" }}
+                      />
+                      <AvatarFallback>
+                        <Text>ZN</Text>
+                      </AvatarFallback>
+                    </Avatar>
+                  </View>
+                ),
               }}
-            />
-          </Stack>
+            >
+              <Stack.Screen name="index" options={{ title: "Home" }} />
+              <Stack.Screen name="form" options={{ title: "Formulário" }} />
+              <Stack.Screen name="model" options={{ title: "Login Exemple" }} />
+              <Stack.Screen
+                name="modal"
+                options={{
+                  title: "Este e um modal",
+                  presentation: "modal",
+                }}
+              />
+
+              <Stack.Screen
+                name="(auth)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(private)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="top-tab"
+                options={{
+                  headerShown: false,
+                }}
+              />
+            </Stack>
+          </SessionProvider>
         </BottomSheetModalProvider>
         <PortalHost />
       </GestureHandlerRootView>
