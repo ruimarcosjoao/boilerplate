@@ -1,11 +1,27 @@
+// @ts-ignore
 import Docker from "@/assets/images/docker-3.svg";
+// @ts-ignore
+
 import Gennius from "@/assets/images/gennius.svg";
+// @ts-ignore
+
 import Git from "@/assets/images/git-icon.svg";
+// @ts-ignore
+
 import Nodejs from "@/assets/images/nodejs.svg";
+// @ts-ignore
+
 import Python from "@/assets/images/python-5.svg";
+// @ts-ignore
+
 import { default as ReactNative } from "@/assets/images/react-native-1.svg";
+// @ts-ignore
+
 import Tailwindcss from "@/assets/images/tailwind-css-2.svg";
+// @ts-ignore
+
 import Typescript from "@/assets/images/typescript.svg";
+
 import CommandScreen from "@/components/commandScreen";
 import {
   BottomSheet,
