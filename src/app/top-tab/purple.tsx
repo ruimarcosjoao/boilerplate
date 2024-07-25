@@ -10,7 +10,7 @@ const SettingsScreen = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <View className="flex-1 p-6 gap-4">
+    <View className="flex-1 p-6 gap-4 bg-backround">
       <View className="bg-secondary py-6 px-4 rounded-xl w-full flex-row gap-4 items-center justify-between">
         <View className="flex-1">
           <H4>Settings one</H4>

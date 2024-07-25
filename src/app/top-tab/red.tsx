@@ -6,7 +6,7 @@ import { View } from "react-native";
 ("@/components/ui/typography");
 export default function Red() {
   return (
-    <View className="flex-1 p-4 bg-white">
+    <View className="flex-1 p-4 bg-background">
       <H3 className="border-none">Red</H3>
       <P className="">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis alias
