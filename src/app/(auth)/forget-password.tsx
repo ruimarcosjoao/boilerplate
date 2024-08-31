@@ -17,20 +17,22 @@ export default function ForgetPassword() {
       />
       <H1>Forget Password</H1>
       <View className="w-full items-center gap-4">
-        <View className="w-[80%]">
-          <Label nativeID="email">Email</Label>
-          <Input
-            placeholder="email to recover account"
-            accessibilityLabel="email"
-            inputMode="email"
-          />
+        <View className="p-4 w-full gap-3">
+          <View className="gap-1">
+            <Label nativeID="email">Email</Label>
+            <Input
+              placeholder="email to recover account"
+              accessibilityLabel="email"
+              inputMode="email"
+            />
+          </View>
+          <Link asChild href={"/(auth)/sign-in"}>
+            <Button className="w-full flex-row items-center gap-2">
+              <Forward className="text-primary-foreground" />
+              <Text>Send me code</Text>
+            </Button>
+          </Link>
         </View>
-        <Link asChild href={"/(auth)/sign-in"}>
-          <Button className="w-[80%] flex-row items-center gap-2">
-            <Forward className="text-primary-foreground" />
-            <Text>Send me code</Text>
-          </Button>
-        </Link>
 
         <View className="items-center">
           <Link href={"/(auth)/sign-in"}>
