@@ -4,7 +4,6 @@ import { H4, Small } from "@/components/ui/typography";
 import { Folder } from "@/lib/icons/Folder";
 import { Bell, MessageSquareMore } from "@/lib/icons/icons";
 import { Menu } from "@/lib/icons/Menu";
-import { Settings } from "@/lib/icons/Setting";
 import { User } from "@/lib/icons/User";
 import { getProfileStore } from "@/lib/use-secure-store";
 import { DrawerActions } from "@react-navigation/native";
@@ -108,21 +107,6 @@ export default function Layout() {
             },
           }}
         />
-
-        <Drawer.Screen
-          name="settings"
-          options={{
-            title: "Definicoes",
-            drawerIcon(props) {
-              return (
-                <Settings
-                  className={props.focused ? "text-primary" : "text-foreground"}
-                />
-              );
-            },
-          }}
-        />
-
         <Drawer.Screen
           name="notification"
           options={{
