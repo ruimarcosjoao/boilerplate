@@ -23,8 +23,6 @@ export const signUpUser = async ({
       return { success: false, message: response.data.message };
     }
 
-    console.log(response);
-
     return { success: true };
   } catch (error) {
     // console.error("Erro ao Cadastrar", error);

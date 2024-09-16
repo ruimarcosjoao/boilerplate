@@ -2,6 +2,7 @@ import { CustomDrawerContent } from "@/components/CustomDrawerContent";
 import { Skeleton } from "@/components/ui/skeleton";
 import { H4, Small } from "@/components/ui/typography";
 import { Folder } from "@/lib/icons/Folder";
+import { Bell, MessageSquareMore } from "@/lib/icons/icons";
 import { Menu } from "@/lib/icons/Menu";
 import { Settings } from "@/lib/icons/Setting";
 import { User } from "@/lib/icons/User";
@@ -95,7 +96,7 @@ export default function Layout() {
           }}
         />
         <Drawer.Screen
-          name="profile/index"
+          name="profile"
           options={{
             title: "Perfil",
             drawerIcon(props) {
@@ -115,6 +116,34 @@ export default function Layout() {
             drawerIcon(props) {
               return (
                 <Settings
+                  className={props.focused ? "text-primary" : "text-foreground"}
+                />
+              );
+            },
+          }}
+        />
+
+        <Drawer.Screen
+          name="notification"
+          options={{
+            title: "Notificações",
+            drawerIcon(props) {
+              return (
+                <Bell
+                  className={props.focused ? "text-primary" : "text-foreground"}
+                />
+              );
+            },
+          }}
+        />
+
+        <Drawer.Screen
+          name="support"
+          options={{
+            title: "Suporte",
+            drawerIcon(props) {
+              return (
+                <MessageSquareMore
                   className={props.focused ? "text-primary" : "text-foreground"}
                 />
               );

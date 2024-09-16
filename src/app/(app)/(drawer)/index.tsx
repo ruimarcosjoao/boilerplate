@@ -15,7 +15,6 @@ export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
 
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
@@ -36,8 +35,6 @@ export default function Index() {
   const handleBarCodeScanned = ({ type, data }: { type: any; data: any }) => {
     setScanned(true);
     const transformed = getQrCodeTextAndTransformInObject(data);
-    // console.log(transformed);
-    // setDocumentData({});
     setDocumentData(transformed);
 
     alert(`Nome completo: ${transformed.nome}`);
@@ -107,139 +104,6 @@ export default function Index() {
             </CardContent>
           </Card>
         </View>
-
-        {/* <View className="">
-
-          <BottomSheet>
-            <BottomSheetOpenTrigger asChild>
-              <Button
-                variant={"secondary"}
-                size={"lg"}
-                // onPress={() => navegation.dispatch(DrawerActions.openDrawer())}
-                className="w-full"
-              >
-                <Text className="text-xl font-bold text-white">
-                  Adicionar Documento
-                </Text>
-              </Button>
-            </BottomSheetOpenTrigger>
-            <BottomSheetContent>
-              <BottomSheetView>
-                <View className="h-96 items-center justify-center gap-2">
-                  <View className="h-56 w-56 rounded-lg overflow-hidden">
-                    <CameraView
-                      onBarcodeScanned={
-                        scanned ? undefined : handleBarCodeScanned
-                      }
-                      barcodeScannerSettings={{
-                        barcodeTypes: ["qr", "pdf417"],
-                      }}
-                      facing={facing}
-                      style={{ flex: 1 }}
-                    ></CameraView>
-                  </View>
-                  <Button
-                    onPress={toggleCameraFacing}
-                    variant={"outline"}
-                    className="flex-row gap-1 w-56"
-                    size={"sm"}
-                  >
-                    <SwitchCamera className="text-foreground" />
-                    <Text>Virar Camera</Text>
-                  </Button>
-                  <Button
-                    variant={"secondary"}
-                    size={"lg"}
-                    onPress={() => setScanned(false)}
-                    // onPress={() => navegation.dispatch(DrawerActions.openDrawer())}
-                    className="w-64 flex-row gap-1"
-                  >
-                    <QrCode className="text-white" />
-                    <Text className="text-xl font-bold text-white">
-                      Escanear QR code
-                    </Text>
-                  </Button>
-                  {documentData && Object.keys(documentData).length > 0 && (
-                    <Link
-                      asChild
-                      href={{
-                        pathname: `/documents/view`,
-                        params: documentData,
-                      }}
-                    >
-                      <Button>
-                        <Text>Vizualizar dados</Text>
-                      </Button>
-                    </Link>
-                  )}
-                </View>
-              </BottomSheetView>
-            </BottomSheetContent>
-          </BottomSheet>
-        </View> */}
-        {/* <View className="flex-row items-center justify-between">
-          <H4 className="text-foreground">Servicos Populares</H4>
-          <Link href={"/(app)/services"}>
-            <Text>Ver todos</Text>
-          </Link>
-        </View>
-        <Card className="p-0 bg-input">
-          <CardContent className="w-full px-4 py-4 flex-row gap-2 items-center justify-between">
-            <View className="flex-row gap-4 items-center">
-              <Award className="text-secondary" />
-              <Text className="text-lg dark:text-foreground font-medium">
-                Serviços Publicos
-              </Text>
-            </View>
-            <ChevronRight className="text-foreground" />
-          </CardContent>
-        </Card>
-        <Card className="p-0 bg-input">
-          <CardContent className="w-full px-4 py-4 flex-row gap-2 items-center justify-between">
-            <View className="flex-row gap-4 items-center">
-              <FileBadge className="text-secondary" />
-              <Text className="text-lg dark:text-foreground font-medium">
-                Consulta de documentos
-              </Text>
-            </View>
-            <ChevronRight className="text-foreground" />
-          </CardContent>
-        </Card>
-        <View className="gap-4">
-          <H4 className="text-foreground">Operações a fazer</H4>
-          <Card className="p-0 bg-input">
-            <CardContent className="w-full px-4 py-4 flex-row gap-2 items-center justify-between">
-              <View className="flex-row gap-4 items-center">
-                <Camera className="text-secondary" size={30} />
-                <View className="w-[80%]">
-                  <Text className="text-lg dark:text-foreground font-medium">
-                    Validar Documento
-                  </Text>
-                  <Small className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </Small>
-                </View>
-              </View>
-              <ChevronRight className="text-foreground" />
-            </CardContent>
-          </Card>
-          <Card className="p-0 bg-input">
-            <CardContent className="w-full px-4 py-4 flex-row gap-2 items-center justify-between">
-              <View className="flex-row gap-4 items-center">
-                <CircleCheckBig className="text-secondary" size={30} />
-                <View className="w-[80%]">
-                  <Text className="text-lg dark:text-foreground font-medium">
-                    Gerir Autorização
-                  </Text>
-                  <Small className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </Small>
-                </View>
-              </View>
-              <ChevronRight className="text-foreground" />
-            </CardContent>
-          </Card>
-        </View> */}
       </View>
       <Link href={"/(app)/documents/add"} asChild>
         <Button

@@ -65,8 +65,6 @@ export default function SignUp() {
     },
   });
 
-  // console.log(env.EXPO_PUBLIC_API_BASE_URL);
-
   function onSubmit(values: z.infer<typeof formSchema>) {
     mutate(values);
   }

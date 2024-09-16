@@ -1,13 +1,20 @@
 import {
   ArchiveRestore,
   Award,
+  BadgeCheck,
+  BadgeHelp,
+  Bell,
   Camera,
+  ChevronLeft,
   ChevronRight,
   CircleCheckBig,
   ClipboardCopy,
   Download,
   FileBadge,
+  FileInput,
+  FileOutput,
   LucideFolderArchive,
+  MessageSquareMore,
   Power,
   QrCode,
   RefreshCcw,
@@ -15,6 +22,7 @@ import {
   Star,
   SwitchCamera,
 } from "lucide-react-native";
+
 import { iconWithClassName } from "./iconWithClassName";
 iconWithClassName(Award);
 iconWithClassName(ChevronRight);
@@ -31,17 +39,31 @@ iconWithClassName(Power);
 iconWithClassName(RefreshCcw);
 iconWithClassName(SwitchCamera);
 iconWithClassName(QrCode);
+iconWithClassName(MessageSquareMore);
+iconWithClassName(ChevronLeft);
+iconWithClassName(Bell);
+iconWithClassName(BadgeCheck);
+iconWithClassName(BadgeHelp);
+iconWithClassName(FileInput);
+iconWithClassName(FileOutput);
 
 export {
   ArchiveRestore,
   Award,
+  BadgeCheck,
+  BadgeHelp,
+  Bell,
   Camera,
+  ChevronLeft,
   ChevronRight,
   CircleCheckBig,
   ClipboardCopy,
   Download,
   FileBadge,
+  FileInput,
+  FileOutput,
   LucideFolderArchive,
+  MessageSquareMore,
   Power,
   QrCode,
   RefreshCcw,

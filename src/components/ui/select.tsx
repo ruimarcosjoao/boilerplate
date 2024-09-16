@@ -1,4 +1,5 @@
 import * as SelectPrimitive from "@rn-primitives/select";
+import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import * as React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
@@ -6,6 +7,39 @@ import { Check } from "../../lib/icons/Check";
 import { ChevronDown } from "../../lib/icons/ChevronDown";
 import { ChevronUp } from "../../lib/icons/ChevronUp";
 import { cn } from "../../lib/utils";
+import { PopoverContent } from "./popover";
+
+const SELECT_ITEM_HEIGHT = 50;
+
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+interface SelectProps {
+  items: SelectOption[];
+  value: SelectOption | null;
+  onValueChange?: (value: SelectOption | null) => void;
+}
+interface SelectContext {
+  items: SelectOption[];
+  selected: SelectOption | null;
+  onValueChange?: (value: SelectOption | null) => void;
+}
+
+const SelectContext = React.createContext<SelectContext>({} as SelectContext);
+
+function useSelectContext() {
+  const context = React.useContext(SelectContext);
+  if (!context) {
+    throw new Error(
+      "Select compound components cannot be rendered outside the Select component"
+    );
+  }
+  return context;
+}
+
+type RenderSelectItem = ListRenderItem<SelectOption>;
 
 type Option = SelectPrimitive.Option;
 
@@ -181,16 +215,59 @@ const SelectSeparator = React.forwardRef<
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
+const SelectList = React.forwardRef<
+  React.ElementRef<typeof FlashList<SelectOption>>,
+  Omit<
+    React.ComponentPropsWithoutRef<typeof FlashList<SelectOption>>,
+    "data" | "estimatedItemSize" | "initialScrollIndex"
+  > & {
+    containerProps?: React.ComponentPropsWithoutRef<typeof PopoverContent>;
+  }
+>(({ containerProps, extraData, ...props }, ref) => {
+  const { selected, items } = useSelectContext();
+
+  const { initialScrollIndex, contentStyle } = React.useMemo(() => {
+    return {
+      initialScrollIndex: selected
+        ? items.findIndex((item) => item.value === selected.value)
+        : undefined,
+      contentStyle: { height: items.length * SELECT_ITEM_HEIGHT },
+    };
+  }, [selected, items]);
+
+  return (
+    <PopoverContent
+      style={contentStyle}
+      className="p-0 max-h-[30%]"
+      {...containerProps}
+    >
+      <FlashList<SelectOption>
+        ref={ref}
+        data={items}
+        estimatedItemSize={SELECT_ITEM_HEIGHT - 1}
+        initialScrollIndex={initialScrollIndex}
+        extraData={[selected, extraData]}
+        {...props}
+      />
+    </PopoverContent>
+  );
+});
+
+SelectList.displayName = "SelectList";
+
 export {
+  RenderSelectItem,
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectList,
   SelectScrollDownButton,
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
   type Option,
+  type SelectOption,
 };

@@ -11,7 +11,7 @@ export async function getUrlToUpload(): Promise<z.infer<
 > | null> {
   try {
     const response = await api.get<z.infer<typeof GetUrlToUpload>>(
-      "/user-details"
+      "/users/upload/generate-upload-url"
     );
     if (response) {
       return response.data;

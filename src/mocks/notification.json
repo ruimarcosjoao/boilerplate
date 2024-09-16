@@ -1,0 +1,21 @@
+[
+  { "id": 1, "title": "Pedro aceitou seu pedido", "status": true },
+  { "id": 2, "title": "Nova mensagem de João", "status": false },
+  { "id": 3, "title": "Seu pedido foi enviado", "status": true },
+  { "id": 4, "title": "Você recebeu um novo amigo", "status": false },
+  { "id": 5, "title": "Atualização de estoque disponível", "status": true },
+  { "id": 6, "title": "Nova promoção disponível", "status": true },
+  { "id": 7, "title": "Seu pedido foi cancelado", "status": false },
+  { "id": 8, "title": "Você ganhou um desconto", "status": true },
+  { "id": 9, "title": "Nova mensagem de Maria", "status": false },
+  {
+    "id": 10,
+    "title": "Seu pedido está pronto para ser enviado",
+    "status": true
+  },
+  { "id": 11, "title": "Você recebeu um novo pedido", "status": false },
+  { "id": 12, "title": "Atualização de estoque indisponível", "status": true },
+  { "id": 13, "title": "Nova oferta especial", "status": true },
+  { "id": 14, "title": "Seu pedido foi devolvido", "status": false },
+  { "id": 15, "title": "Você ganhou um prêmio", "status": true }
+]

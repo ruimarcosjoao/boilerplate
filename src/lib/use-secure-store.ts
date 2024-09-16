@@ -65,6 +65,7 @@ export const removeProfile = async (): Promise<void> => {
 export const getProfileStore = async (): Promise<Profile | null> => {
   try {
     const data = await SecureStore.getItemAsync("profile");
+
     if (data) {
       return JSON.parse(data);
     }

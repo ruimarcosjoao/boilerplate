@@ -5,7 +5,6 @@ import React from "react";
 import { View } from "react-native";
 export default function VizualiseDoc() {
   const transformed = useLocalSearchParams();
-  console.log(transformed);
 
   return (
     <View className="flex-1 p-6 bg-background">

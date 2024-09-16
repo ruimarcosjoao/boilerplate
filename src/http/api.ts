@@ -38,9 +38,7 @@ api.interceptors.response.use(
   (error) => {
     // Verifica se o erro é de autenticação (401)
     if (error.response && error.response.status === 401) {
-      // Lógica para lidar com a expiração do token ou redirecionamento para login
       console.log("Token expirado ou inválido. Redirecionando para login...");
-      // Exemplo: redirecionar para a página de login
       router.push(env.EXPO_PUBLIC_REDIRECT_ERROR);
     }
 
